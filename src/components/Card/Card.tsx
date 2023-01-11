@@ -7,8 +7,9 @@ import {
   CardActionArea,
   CardActions,
 } from '@mui/material';
-import { Article } from '../types/article';
-import calendar from '../images/calendar.svg';
+import { NavLink } from 'react-router-dom';
+import { Article } from '../../types/article';
+import calendar from '../../images/calendar.svg';
 
 type Props = {
   card: Article,
@@ -70,7 +71,11 @@ export const Card: React.FC<Props> = ({ card }) => {
       </CardActionArea>
       <CardActions>
         <Button size="small" color="primary">
-          Read more
+          <NavLink
+            to={`../${card.id}`}
+          >
+            Read More
+          </NavLink>
         </Button>
       </CardActions>
     </CardElement>

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Grid as GridElement, Typography } from '@mui/material';
-import { getArticles } from '../api';
-import { Article } from '../types/article';
+import { getArticles } from '../../api';
+import { Article } from '../../types/article';
 import Card from '../Card';
 
 export const Grid: React.FC = () => {
