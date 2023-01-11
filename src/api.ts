@@ -1,27 +1,6 @@
-const BASE_URL = 'https://api.spaceflightnewsapi.net/v3';
+import { Article } from './types/article';
 
-export interface Article {
-  id: 0,
-  featured: false,
-  title: 'string',
-  url: 'string',
-  imageUrl: 'string',
-  newsSite: 'string',
-  summary: 'string',
-  publishedAt: 'string',
-  launches: [
-    {
-      id: 'string',
-      provider: 'string'
-    },
-  ],
-  events: [
-    {
-      id: 'string',
-      provider: 'string'
-    },
-  ]
-}
+const BASE_URL = 'https://api.spaceflightnewsapi.net/v3';
 
 function get<T>(url: string): Promise<T> {
   // eslint-disable-next-line prefer-template
