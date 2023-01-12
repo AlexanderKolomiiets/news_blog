@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/news_blog/static/css/main.7087a658.css",
-    "main.js": "/news_blog/static/js/main.9eb004e5.js",
-    "static/media/Montserrat-SemiBold.ttf": "/news_blog/static/media/Montserrat-SemiBold.d5e0cc788cba9ced1fb9.ttf",
-    "static/media/Montserrat-Medium.ttf": "/news_blog/static/media/Montserrat-Medium.c86e3b9010ff63c99166.ttf",
-    "static/media/Montserrat-Bold.ttf": "/news_blog/static/media/Montserrat-Bold.2c155811b35513d5beaa.ttf",
-    "static/media/Montserrat-Regular.ttf": "/news_blog/static/media/Montserrat-Regular.ceb11275ab638627a643.ttf",
-    "static/media/calendar.svg": "/news_blog/static/media/calendar.af2e4a43a028516883cf517a9410cc0c.svg",
-    "index.html": "/news_blog/index.html",
-    "main.7087a658.css.map": "/news_blog/static/css/main.7087a658.css.map",
-    "main.9eb004e5.js.map": "/news_blog/static/js/main.9eb004e5.js.map"
+    "main.css": "./static/css/main.af8586e3.css",
+    "main.js": "./static/js/main.3cce7399.js",
+    "static/media/Montserrat-SemiBold.ttf": "./static/media/Montserrat-SemiBold.d5e0cc788cba9ced1fb9.ttf",
+    "static/media/Montserrat-Medium.ttf": "./static/media/Montserrat-Medium.c86e3b9010ff63c99166.ttf",
+    "static/media/Montserrat-Bold.ttf": "./static/media/Montserrat-Bold.2c155811b35513d5beaa.ttf",
+    "static/media/Montserrat-Regular.ttf": "./static/media/Montserrat-Regular.ceb11275ab638627a643.ttf",
+    "static/media/calendar.svg": "./static/media/calendar.af2e4a43a028516883cf517a9410cc0c.svg",
+    "index.html": "./index.html",
+    "main.af8586e3.css.map": "./static/css/main.af8586e3.css.map",
+    "main.3cce7399.js.map": "./static/js/main.3cce7399.js.map"
   },
   "entrypoints": [
-    "static/css/main.7087a658.css",
-    "static/js/main.9eb004e5.js"
+    "static/css/main.af8586e3.css",
+    "static/js/main.3cce7399.js"
   ]
 }
