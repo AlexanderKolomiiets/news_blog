@@ -13,14 +13,34 @@ import calendar from '../../images/calendar.svg';
 
 type Props = {
   card: Article,
+  query: string,
 };
 
-export const Card: React.FC<Props> = ({ card }) => {
+export const Card: React.FC<Props> = ({ card, query }) => {
   const date = new Date(card.publishedAt)
     .toLocaleDateString('en-us',
       {
         year: 'numeric', month: 'short', day: 'numeric',
       });
+
+  const title = card.title.length > 100
+    ? `${card.title.slice(0, 100)}...`
+    : card.title;
+
+  const summary = card.summary.length > 100
+    ? `${card.summary.slice(0, 100)}...`
+    : card.summary;
+
+  let highlightedTitle;
+  let highlightedSummary;
+
+  if (title.toLowerCase().includes(query.toLowerCase())) {
+    highlightedTitle = title.replace(new RegExp(query, 'gi'),
+      match => `<mark style="background: yellow;">${match}</mark>`) || title;
+  } else if (summary.toLowerCase().includes(query.toLowerCase())) {
+    highlightedSummary = summary.replace(new RegExp(query, 'gi'),
+      match => `<mark style="background: yellow;">${match}</mark>`) || summary;
+  }
 
   return (
     <CardElement
@@ -57,16 +77,16 @@ export const Card: React.FC<Props> = ({ card }) => {
             />
             {date}
           </Typography>
-          <Typography variant="h5" component="div">
-            {card.title.length > 100
-              ? `${card.title.slice(0, 100)}...`
-              : card.title}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            {card.summary.length > 100
-              ? `${card.summary.slice(0, 100)}...`
-              : card.summary}
-          </Typography>
+          <Typography
+            variant="h5"
+            component="div"
+            dangerouslySetInnerHTML={{ __html: highlightedTitle || title }}
+          />
+          <Typography
+            variant="body2"
+            color="text.secondary"
+            dangerouslySetInnerHTML={{ __html: highlightedSummary || summary }}
+          />
         </CardContent>
       </CardActionArea>
       <CardActions>
