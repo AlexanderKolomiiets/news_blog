@@ -7,7 +7,7 @@ import {
   CardActionArea,
   CardActions,
 } from '@mui/material';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Article } from '../../types/article';
 import calendar from '../../images/calendar.svg';
 
@@ -71,11 +71,12 @@ export const Card: React.FC<Props> = ({ card }) => {
       </CardActionArea>
       <CardActions>
         <Button size="small" color="primary">
-          <NavLink
+          <Link
+            style={{ textDecoration: 'none', color: '#363636' }}
             to={`../${card.id}`}
           >
             Read More
-          </NavLink>
+          </Link>
         </Button>
       </CardActions>
     </CardElement>

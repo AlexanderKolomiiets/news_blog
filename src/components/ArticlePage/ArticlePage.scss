@@ -1,0 +1,13 @@
+.article {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 70vh;
+  width: 90%;
+  padding: 30px;
+  top: 50%;
+  right: 50%;
+  transform: translate(50%,-50%);
+  text-align: center;
+}

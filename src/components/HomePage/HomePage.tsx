@@ -1,22 +1,14 @@
-import { useEffect, useState } from 'react';
 import { Grid as GridElement, Typography } from '@mui/material';
-import { getArticles } from '../../api';
 import { Article } from '../../types/article';
 import Card from '../Card';
 
-export const Grid: React.FC = () => {
-  const [articles, setArticles] = useState<Article[]>([]);
+type Props = {
+  articles: Article[]
+};
 
-  useEffect(() => {
-    const fetchArticles = async () => {
-      setArticles(await getArticles());
-    };
-
-    fetchArticles();
-  }, []);
-
+export const HomePage: React.FC<Props> = ({ articles }) => {
   return (
-    <div className="App">
+    <div style={{ maxWidth: '1240px', margin: '0 auto' }}>
       <Typography
         variant="subtitle1"
         component="div"
