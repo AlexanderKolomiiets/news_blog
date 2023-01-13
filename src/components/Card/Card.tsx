@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import {
   Card as CardElement,
   CardContent,
@@ -7,21 +8,27 @@ import {
   CardActionArea,
   CardActions,
 } from '@mui/material';
-import { Link } from 'react-router-dom';
+import CalendarTodayOutlinedIcon from
+  '@mui/icons-material/CalendarTodayOutlined';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import { useAppSelector } from '../../app/hooks';
 import { Article } from '../../types/article';
-import calendar from '../../images/calendar.svg';
+import './Card.scss';
 
 type Props = {
   card: Article,
-  query: string,
 };
 
-export const Card: React.FC<Props> = ({ card, query }) => {
-  const date = new Date(card.publishedAt)
-    .toLocaleDateString('en-us',
-      {
-        year: 'numeric', month: 'short', day: 'numeric',
-      });
+export const Card: React.FC<Props> = ({ card }) => {
+  const query = useAppSelector(state => state.filter.query);
+
+  const formattedDate = (date: string) => {
+    const newDate = new Date(date).toLocaleString('en', {
+      dateStyle: 'long',
+    }).split(',');
+
+    return `${newDate[0]}th, ${newDate[1]}`;
+  };
 
   const title = card.title.length > 100
     ? `${card.title.slice(0, 100)}...`
@@ -46,7 +53,8 @@ export const Card: React.FC<Props> = ({ card, query }) => {
     <CardElement
       sx={{
         maxWidth: 400,
-        height: 500,
+        height: 530,
+        boxShadow: 2,
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-between',
@@ -62,40 +70,41 @@ export const Card: React.FC<Props> = ({ card, query }) => {
         <CardContent sx={{
           display: 'flex',
           flexDirection: 'column',
-          gap: '12px',
+          gap: '15px',
         }}
         >
           <Typography
             variant="subtitle2"
             component="div"
-            color="#aaa"
+            color="#777777"
+            style={{ display: 'flex', gap: '10px', fontWeight: '400' }}
           >
-            <img
-              src={calendar}
-              alt="calendar icon"
-              style={{ marginRight: '10px' }}
-            />
-            {date}
+            <CalendarTodayOutlinedIcon fontSize="small" />
+            {formattedDate(card.publishedAt)}
           </Typography>
           <Typography
-            variant="h5"
+            variant="h6"
             component="div"
             dangerouslySetInnerHTML={{ __html: highlightedTitle || title }}
           />
           <Typography
-            variant="body2"
+            variant="subtitle2"
             color="text.secondary"
             dangerouslySetInnerHTML={{ __html: highlightedSummary || summary }}
           />
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" color="primary">
+        <Button
+          size="small"
+          sx={{ margin: '0 0 10px 10px', textTransform: 'none' }}
+        >
           <Link
-            style={{ textDecoration: 'none', color: '#363636' }}
-            to={`../${card.id}`}
+            className="card__link"
+            to={`../articles/${card.id}`}
           >
-            Read More
+            Read more
+            <ArrowForwardIcon fontSize="small" />
           </Link>
         </Button>
       </CardActions>

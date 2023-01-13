@@ -1,40 +1,49 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import {
   Routes,
   Route,
   Navigate,
 } from 'react-router-dom';
-import HomePage from './components/HomePage';
-import './App.css';
-import ArticlePage from './components/ArticlePage';
-import { Article } from './types/article';
+import { createTheme, ThemeProvider } from '@mui/material';
+import { useAppDispatch } from './app/hooks';
+import HomePage from './pages/HomePage';
+import ArticlePage from './pages/ArticlePage';
+import PageNotFound from './pages/PageNotFound';
+import { actions as articlesActions } from './features/articles';
 import { getArticles } from './api';
+import './App.scss';
+
+const theme = createTheme({
+  typography: {
+    fontFamily: [
+      'Montserrat',
+    ].join(','),
+  },
+});
 
 function App() {
-  const [articles, setArticles] = useState<Article[]>([]);
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     const fetchArticles = async () => {
-      setArticles(await getArticles());
+      dispatch(articlesActions.add(await getArticles()));
     };
 
     fetchArticles();
   }, []);
 
   return (
-    <div className="App">
+    <ThemeProvider theme={theme}>
       <Routes>
-        <Route path="/">
-          <Route index element={<HomePage articles={articles} />} />
-          <Route
-            path=":selectedId"
-            element={<ArticlePage articles={articles} />}
-          />
-        </Route>
+        <Route path="/" element={<HomePage />} />
+        <Route
+          path="/articles/:selectedId"
+          element={<ArticlePage />}
+        />
         <Route path="/home" element={<Navigate to="/" replace />} />
-        <Route path="*" element={<h1 className="title">Page not found</h1>} />
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
-    </div>
+    </ThemeProvider>
   );
 }
 
