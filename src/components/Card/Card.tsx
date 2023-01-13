@@ -43,10 +43,10 @@ export const Card: React.FC<Props> = ({ card }) => {
 
   if (title.toLowerCase().includes(query.toLowerCase())) {
     highlightedTitle = title.replace(new RegExp(query, 'gi'),
-      match => `<mark style="background: yellow;">${match}</mark>`) || title;
+      match => `<mark style="background: yellow;">${match}</mark>`);
   } else if (summary.toLowerCase().includes(query.toLowerCase())) {
     highlightedSummary = summary.replace(new RegExp(query, 'gi'),
-      match => `<mark style="background: yellow;">${match}</mark>`) || summary;
+      match => `<mark style="background: yellow;">${match}</mark>`);
   }
 
   return (
@@ -77,7 +77,7 @@ export const Card: React.FC<Props> = ({ card }) => {
             variant="subtitle2"
             component="div"
             color="#777777"
-            style={{ display: 'flex', gap: '10px', fontWeight: '400' }}
+            sx={{ display: 'flex', gap: '10px', fontWeight: '400' }}
           >
             <CalendarTodayOutlinedIcon fontSize="small" />
             {formattedDate(card.publishedAt)}

@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 
-import articlesReducer from '../features/articles';
-import filterReduces from '../features/filter';
+import articlesReducer from '../features/articlesSlice';
+import filterReduces from '../features/filterSlice';
 
 export const store = configureStore({
   reducer: {

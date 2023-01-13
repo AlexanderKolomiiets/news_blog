@@ -13,9 +13,9 @@ export const CardList: React.FC = () => {
         sx={{
           width: '100%',
           margin: '30px 0',
+          paddingBottom: '4px',
           fontWeight: '600',
           borderBottom: '1px solid #EAEAEA',
-          paddingBottom: '4px',
         }}
       >
         {`Results: ${articles.length}`}

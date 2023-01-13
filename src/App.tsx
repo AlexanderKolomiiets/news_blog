@@ -9,7 +9,7 @@ import { useAppDispatch } from './app/hooks';
 import HomePage from './pages/HomePage';
 import ArticlePage from './pages/ArticlePage';
 import PageNotFound from './pages/PageNotFound';
-import { actions as articlesActions } from './features/articles';
+import { actions as articlesActions } from './features/articlesSlice';
 import { getArticles } from './api';
 import './App.scss';
 

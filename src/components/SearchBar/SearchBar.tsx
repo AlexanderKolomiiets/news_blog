@@ -1,7 +1,7 @@
 import { ChangeEvent } from 'react';
 import { TextField, Typography } from '@mui/material';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import { actions as queryActions } from '../../features/filter';
+import { actions as queryActions } from '../../features/filterSlice';
 
 export const SearchBar: React.FC = () => {
   const dispatch = useAppDispatch();
